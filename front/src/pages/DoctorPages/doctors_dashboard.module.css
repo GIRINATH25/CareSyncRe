@@ -1,0 +1,41 @@
+.container{
+    margin:80px;
+    box-shadow: 10px 10px 10px #d1d9e6, -10px -10px 10px #f9f9f9;
+    border-radius: 12px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+}
+
+.login{
+    
+    padding : 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: rgb(235, 54, 54);
+    margin-left:400px;
+    width:10%;
+    height: 190px;
+    border-radius: 0 0 100px 0;
+}
+
+.telematics{
+    
+    padding : 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: rgb(58, 221, 177);
+    margin-left:200px;
+    width:10%;
+    height: 190px;
+    border-radius: 0 0 100px 0;
+  
+}
+
+.i2nd{
+    display: flex;
+    flex-direction: row;
+}
+
