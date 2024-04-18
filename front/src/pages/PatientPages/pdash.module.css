@@ -1,0 +1,98 @@
+.container {
+  display: flex;
+}
+
+.main {
+  position: relative;
+  padding: 20px;
+  width: 100%;
+}
+
+.mainTop {
+  display: flex;
+  width: 100%;
+}
+
+.mainTop h1 {
+  font-size: 24px;
+}
+
+.users {
+  display: flex;
+  width: 100%;
+}
+
+.card {
+  width: 25%;
+  margin: 10px;
+  background: #fff;
+  text-align: center;
+  border-radius: 10px;
+  padding: 10px;
+  box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);
+}
+
+.card img {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+}
+
+.card h4 {
+  text-transform: uppercase;
+}
+
+.card h4,
+.card p {
+  font-size: 14px;
+  padding-top: 6px;
+}
+
+.attendance {
+  margin-top: 20px;
+  text-transform: capitalize;
+}
+
+.attendanceList {
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);
+}
+
+.table {
+  border-collapse: collapse;
+  margin: 25px 0;
+  font-size: 15px;
+  min-width: 100%;
+  overflow: hidden;
+  border-radius: 5px 5px 0 0;
+}
+
+.table thead tr {
+  color: #fff;
+  background: #34af6d;
+  text-align: left;
+  font-weight: bold;
+}
+
+.table th,
+.table td {
+  padding: 12px 15px;
+}
+
+.table tbody tr {
+  border-bottom: 1px solid #ddd;
+}
+
+.table tbody tr:nth-of-type(odd) {
+  background: #f3f3f3;
+}
+
+.table tbody tr.active {
+  font-weight: bold;
+  color: #4ad489;
+}
+

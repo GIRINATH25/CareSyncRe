@@ -6,22 +6,23 @@ import axios from "axios";
 import { useLocation } from "react-router-dom";
 
 const DoctorDashboard = () => {
+
   const { email } = useLocation().state || {};
   const [user, setUser] = useState(null);
+
+
   useEffect(() => {
     const fetchData = async () => {
       try {
-        console.log(email);
-        const response = await axios.post("/dashboard", { email: email });
-        console.log(response.data);
+        const response = await axios.post("/dashboardDoctor", { email: email });
         setUser(response.data);
       } catch (err) {
         console.log("Error: " + err);
       }
     };
-
     fetchData();
   }, []);
+
   return (
     <div className={styles.main}>
       <div className={`${styles.container}`}>
@@ -35,7 +36,7 @@ const DoctorDashboard = () => {
               margin: "30px",
               marginLeft: "100px",
             }}
-          >
+          > 
             <h4
               style={{
                 paddingLeft: "30px",
