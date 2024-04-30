@@ -14,6 +14,7 @@ const PatientDashboard = () => {
           params: { email },
         });
         setUser(response.data);
+        console.log(response.data.uploadedPDFs);
       } catch (err) {
         console.log("Error: " + err);
       }
@@ -44,12 +45,12 @@ const PatientDashboard = () => {
               <h4>Nominee Relation: {user.NomineeRelation}</h4>
               <h4>Nominee Phone: {user.NomineePhone} </h4>
             </div>
-            {/* <div className={styles.card}>
+            <div className={styles.card}>
             <h4>BP: {user.bp}</h4>
             <h4>Sugar Level: {user.sugar}</h4>
             <h4>Heart Rate: {user.heartrate}</h4>
             <h4>Glucose: {user.glucose}</h4>
-          </div> */}
+          </div>
             <div className={styles.card}>
               <h1>Last Login</h1>
               <div style={{ marginRight: "auto" }}>
@@ -58,7 +59,7 @@ const PatientDashboard = () => {
             </div>
           </div>
 
-          {/* <section className={styles.attendance}>
+          <section className={styles.attendance}>
           <div className={styles["attendance-list"]}>
             <h1>Your Medical Records</h1>
             <table className={styles.table}>
@@ -66,10 +67,10 @@ const PatientDashboard = () => {
                 {user.uploadedPDFs.map((pdf, index) => (
                   <tr key={index}>
                     <td>{index + 1}</td>
-                    <td>{pdf.fileName}</td>
+                    <td>{pdf}</td>
                     <td>
                       <a
-                        href={pdf.filePath}
+                        href={`http://localhost:8000/dashboard/${pdf}`}
                         target="_blank"
                         rel="noopener noreferrer"
                       >
@@ -81,7 +82,7 @@ const PatientDashboard = () => {
               </tbody>
             </table>
           </div>
-        </section> */}
+        </section>
         </section>
       )}
     </div>
