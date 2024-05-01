@@ -59,6 +59,19 @@ const userSchema = mongoose.Schema({
     },
     lastview:{
         type:String,
+    },
+    uploadedPDFs:[],
+    bp:{
+        type:String
+    },
+    glucose:{
+        type:String
+    },
+    heartrate:{
+        type:String
+    },
+    sugar:{
+        type:String
     }
 })
 

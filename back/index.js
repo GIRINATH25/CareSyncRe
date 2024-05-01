@@ -15,7 +15,7 @@ app.use(cors({
   credentials: true 
 }));
 
-const excludedPaths = ['/register/doctor','/login/doctor','/login/patient','/dashboardPatient'];
+const excludedPaths = ['/register/doctor','/login/doctor','/login/patient','/dashboard/editRecord','/dashboard/edit'];
 
 app.use((req, res, next) => {
   if (excludedPaths.includes(req.path) || req.path.startsWith('/dashboard/')) {

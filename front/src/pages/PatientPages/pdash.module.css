@@ -23,13 +23,19 @@
 }
 
 .card {
-  width: 30%;
+  width: 250px;
   margin: 10px;
   background: #fff;
   text-align: center;
   border-radius: 10px;
   padding: 10px;
   box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);
+}
+
+.card h4{
+  display: flex;
+  justify-content: space-evenly;
+  line-height: 200%;
 }
 
 .card img {
