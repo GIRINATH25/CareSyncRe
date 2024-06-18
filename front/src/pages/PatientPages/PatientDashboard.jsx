@@ -9,6 +9,7 @@ const PatientDashboard = () => {
 
   useEffect(() => {
     const fetchData = async () => {
+      console.log(email);
       try {
         const response = await axios.get("/dashboardPatient", {
           params: { email },

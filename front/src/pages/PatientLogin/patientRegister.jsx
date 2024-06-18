@@ -52,7 +52,9 @@ const patientRegister = () => {
         }
       })
       if(response.data.message==="Registration successfull"){
-        navi("/DoctorDashboard",{state:{email}});
+        // navi("/DoctorDashboard",{state:{email}});
+        let count = response.data.count;
+        navi('/finger',{state:{count}});
       }else{
         toast.info(response.data.message);
       }

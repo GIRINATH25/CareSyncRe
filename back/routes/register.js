@@ -46,6 +46,8 @@ router.post('/doctor', upload.single('imageUrl'), async (req, res) => {
       return res.json({ message: 'Registration failed' });
     }
 
+    console.log(store);
+
     res.cookie('auth_tokenDoc', token, { httpOnly: true, maxAge: 3600000 });
     res.json({ message: 'Registration successfull' });
   } catch (error) {
@@ -60,12 +62,13 @@ router.post('/patient', upload.single('imageUrl'), async(req,res)=>{
 
     const Hasemail = await patient.findOne({email:email});
 
+    
     if(Hasemail){
       return res.json({ message: 'Email already registered' });
     }
-
+    
     const hash = await bcrypt.hash(password, 10); 
-
+    
     const store = await patient.create({
       fullname: fullname,
       username: username,
@@ -83,12 +86,14 @@ router.post('/patient', upload.single('imageUrl'), async(req,res)=>{
       imageUrl:req.file.filename,
       lastview:Date().toLocaleString()
     });
-
+    
     if(!store) {
       return res.json({ message: 'Registration failed' });
     }
 
-    res.json({ message: 'Registration successfull' });
+    const count  = await patient.find().count();
+
+    res.json({ message: 'Registration successfull',count:count });
   }catch(err){
     console.log("Error: "+err);
     res.json({ message: 'Internal server error' });

@@ -72,6 +72,9 @@ const userSchema = mongoose.Schema({
     },
     sugar:{
         type:String
+    },
+    Pid:{
+        type:String
     }
 })
 

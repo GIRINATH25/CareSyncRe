@@ -9,6 +9,7 @@ import PatientRegister from "./pages/PatientLogin/patientRegister";
 import DoctorDashboard from "./pages/DoctorPages/DoctorDashboard";
 import PatientDashboard from "./pages/PatientPages/PatientDashboard";
 import PatientDashEdit from "./pages/PatientPages/PatientDashEdit";
+import Patientfinger from "./pages/PatientLogin/Patientfinger";
 
 function App() {
 
@@ -27,6 +28,7 @@ function App() {
           <Route path="/patientRegister" element={<PatientRegister />} />
           <Route path="/patient/Dashboard" element={<PatientDashboard />} />
           <Route path="/patient/Dashboard/edit" element={<PatientDashEdit />} />
+          <Route path="/finger" element={<Patientfinger />} />
         </Routes>
       </Router>
     </>

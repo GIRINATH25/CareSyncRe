@@ -40,27 +40,7 @@ const userSchema = mongoose.Schema({
     dtoken:{
         type:String,
         required:true
-    },
-    bp:{
-        type:String,
-        default:"--"
-    },
-    sugar:{
-        type:String,
-        default:"--"
-    },
-    heartrate:{
-        type:String,
-        default:"--"
-        
-    },
-    glucose:{
-        type:String,
-        default:"--"
-    },
-    uploadedPDFs:[{
-        type:String
-    }]
+    }
 })
 
 const DoctorUser = mongoose.model('DoctorUser',userSchema);

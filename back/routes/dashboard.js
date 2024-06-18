@@ -46,10 +46,7 @@ router.get("/dashboardPatient", async (req, res) => {
   }
 });
 
-router.put(
-  "/dashboard/editRecord",
-  upload.single("imageUrl"),
-  async (req, res) => {
+router.put("/dashboard/editRecord",upload.single("imageUrl"), async (req, res) => {
     try {
       const email = req.body.email;
 
@@ -92,6 +89,7 @@ router.put("/dashboard/edit", async (req, res) => {
           username: update.username,
           age: update.age,
           bloodgroup: update.bloodgroup,
+          gender:update.gender,
           phone: update.phone,
           Nominee: update.Nominee,
           NomineeRelation: update.NomineeRelation,
@@ -107,6 +105,9 @@ router.put("/dashboard/edit", async (req, res) => {
     if(!store){
         return res.json({message:"Error on updating details"});
     }
+
+    console.log(store);
+    
     res.json({ message: "sucessfully uploaded" });
   } catch (err) {
     console.log("Error: " + err);

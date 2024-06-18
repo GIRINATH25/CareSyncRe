@@ -5,63 +5,73 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const PatientDashEdit = () => {
-    const [email, setEmail] = useState("visagan@gmail.com");
-    const [user, setUser] = useState(null);
-  
-    const loadFile = async (e) => {
-      e.preventDefault();
+  const [email, setEmail] = useState("shibi2021cce@sece.ac.in");
+  const [user, setUser] = useState(null);
+
+  const loadFile = async (e) => {
+    e.preventDefault();
+    try {
+      const formData = new FormData();
+      formData.append("email", email);
+      formData.append("imageUrl", e.target.files[0]);
+      const response = await axios.put("/dashboard/editRecord", formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
+      toast.info(response.data.message);
+    } catch (err) {
+      console.log("Error: " + err);
+    }
+  };
+
+  useEffect(() => {
+    const fetchData = async () => {
       try {
-        const formData = new FormData();
-        formData.append("email", email);
-        formData.append("imageUrl", e.target.files[0]);
-        const response = await axios.put("/dashboard/editRecord", formData, {
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
+        const response = await axios.get("/dashboardPatient", {
+          params: { email },
         });
+        setUser(response.data);
+        console.log(response.data);
+      } catch (err) {
+        console.log("Error: " + err);
+      }
+    };
+    fetchData();
+  }, [email]);
+
+  useEffect(() => {
+    const updataData = async () => {
+      try {
+        const response = await axios.put("/dashboard/edit", user);
         toast.info(response.data.message);
       } catch (err) {
         console.log("Error: " + err);
       }
     };
-  
-    useEffect(() => {
-      const fetchData = async () => {
-        try {
-          const response = await axios.get("/dashboardPatient", {
-            params: { email },
-          });
-          setUser(response.data);
-          console.log(response.data.uploadedPDFs);
-        } catch (err) {
-          console.log("Error: " + err);
-        }
-      };
-      fetchData();
-    }, [email]);
-  
-    useEffect(() => {
-      const updataData = async () => {
-        try {
-          const response = await axios.put("/dashboard/edit", user);
-          toast.info(response.data.message);
-        } catch (err) {
-          console.log("Error: " + err);
-        }
-      };
-  
-      if (user !== null) {
-        updataData(); 
-      }
-    }, [user]); 
-  
-    const handleEdit = (field) => {
-      const newValue = prompt(`Enter ${field}:`);
-      setUser((prevUser) => ({
-        ...prevUser,
-        [field]: newValue,
-      }));
-    };
+
+    if (user !== null) {
+      updataData();
+    }
+  }, [user]);
+
+  const handleEdit = (field) => {
+    const newValue = prompt(`Enter ${field}:`);
+    setUser((prevUser) => ({
+      ...prevUser,
+      [field]: newValue,
+    }));
+  };
+
+  const handleAlert = async (e) => {
+    e.preventDefault();
+    try {
+      let add = prompt(`Enter hospitel address to alert`);
+      console.log(add);
+    } catch (err) {
+      console.log("Error:" + err);
+    }
+  };
 
   return (
     <div className={styles.container}>
@@ -158,6 +168,18 @@ const PatientDashEdit = () => {
               <div style={{ marginRight: "auto" }}>
                 Last view: {user.lastview}
               </div>
+              <a
+                href={`https://api.whatsapp.com/send?phone=${
+                  user.phone
+                }&text=${"don't hospitel"}`}
+                target="_blank"
+              >
+                <input
+                  type="submit"
+                  style={{ marginTop: "20%", width: "50%", height: "5vh" }}
+                  value="Alert"
+                />
+              </a>
             </div>
           </div>
 
