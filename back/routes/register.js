@@ -67,7 +67,9 @@ router.post('/patient', upload.single('imageUrl'), async(req,res)=>{
       return res.json({ message: 'Email already registered' });
     }
     
-    const hash = await bcrypt.hash(password, 10); 
+    const hash = await bcrypt.hash(password, 10);
+    
+    const count  = await patient.find().count(); 
     
     const store = await patient.create({
       fullname: fullname,
@@ -84,16 +86,15 @@ router.post('/patient', upload.single('imageUrl'), async(req,res)=>{
       NomineeRelation: NomineeRelation,
       gender: gender,
       imageUrl:req.file.filename,
-      lastview:Date().toLocaleString()
+      lastview:Date().toLocaleString(),
+      Pid: count+1,
     });
     
     if(!store) {
       return res.json({ message: 'Registration failed' });
     }
 
-    const count  = await patient.find().count();
-
-    res.json({ message: 'Registration successfull',count:count });
+    res.json({ message: 'Registration successfull',count:(count+1) });
   }catch(err){
     console.log("Error: "+err);
     res.json({ message: 'Internal server error' });

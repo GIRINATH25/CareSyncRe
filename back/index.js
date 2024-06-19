@@ -6,6 +6,7 @@ const auth = require('./middleware/auth');
 const login = require('./routes/login');
 const Register = require('./routes/register');
 const Dashboard = require('./routes/dashboard');
+const fingerprint = require('./routes/fingerprint');
 
 const app = express();
 app.use(express.json());
@@ -15,7 +16,7 @@ app.use(cors({
   credentials: true 
 }));
 
-const excludedPaths = ['/register/doctor','/login/doctor','/login/patient','/dashboard/editRecord','/dashboard/edit'];
+const excludedPaths = ['/register/doctor','/login/doctor','/login/patient','/dashboard/editRecord','/dashboard/edit','/fingerprint/login'];
 
 app.use((req, res, next) => {
   if (excludedPaths.includes(req.path) || req.path.startsWith('/dashboard/')) {
@@ -28,6 +29,7 @@ app.use((req, res, next) => {
 app.use('/login',login);
 app.use('/register',Register);
 app.use('/',Dashboard);
+app.use('/fingerprint',fingerprint);
 
 mongoose.connect("mongodb://localhost:27017")
         .then(()=>{

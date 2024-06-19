@@ -2,10 +2,11 @@ import React, { useEffect, useState } from "react";
 import styles from "./pdash.module.css";
 import axios from "axios";
 import { toast } from "react-toastify";
+import { useLocation } from "react-router-dom";
 import "react-toastify/dist/ReactToastify.css";
 
 const PatientDashEdit = () => {
-  const [email, setEmail] = useState("shibi2021cce@sece.ac.in");
+  const { email } = useLocation().state || {};
   const [user, setUser] = useState(null);
 
   const loadFile = async (e) => {

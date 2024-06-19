@@ -74,7 +74,7 @@ const userSchema = mongoose.Schema({
         type:String
     },
     Pid:{
-        type:String
+        type:Number
     }
 })
 
